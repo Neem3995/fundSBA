@@ -152,9 +152,13 @@ function getLearnerData(course, ag, submissions) {
     );
 
 
-    const dueDate = new Date(matchingAssignment.due_at);{
+    const dueDate = new Date(matchingAssignment.due_at);
+    
+    if(Number.isNaN(dueDate.getTime())){
         throw new Error("Assignment due date must be valid.");
     }
+
+    
     const isLate = submittedDate > dueDate;
 
     let latePenalty = 0;
