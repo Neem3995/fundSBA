@@ -151,12 +151,10 @@ function getLearnerData(course, ag, submissions) {
         submission.submission.submitted_at
     );
 
-    // if(submittedDate > new Date(matchingAssignment.due_at)){
-    //     score -= matchingAssignment.points_possible * 0.1;
-    // }
-    // replacing for a boolean statement 
 
-    const dueDate = new Date(matchingAssignment.due_at);
+    const dueDate = new Date(matchingAssignment.due_at);{
+        throw new Error("Assignment due date must be valid.");
+    }
     const isLate = submittedDate > dueDate;
 
     let latePenalty = 0;
